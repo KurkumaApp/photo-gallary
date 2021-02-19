@@ -1,5 +1,5 @@
-import { PhotoGalleryState } from 'app/pages/PhotoGallaryPage/slice/types'
+import { PhotoGalleryState } from 'app/pages/PhotoGallaryPage/slice/types';
 
 export interface RootState {
-  photoGallary?: PhotoGalleryState
+  photoGallary?: PhotoGalleryState,
 }

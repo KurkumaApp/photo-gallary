@@ -2,19 +2,19 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 
 interface Props {
-  id: string,
   username: string,
   userProfileImage: string,
   description: string | null,
-  photoUrl: string
+  photoUrlThumb: string,
+  photoUrlFull: string
 }
 
 export function PhotoGallaryItem({
-  id,
   username,
   userProfileImage,
   description,
-  photoUrl
+  photoUrlThumb,
+  photoUrlFull
 }: Props) {
   return (
     <Wrapper>
@@ -22,8 +22,10 @@ export function PhotoGallaryItem({
         <UserProfileImage src={userProfileImage} />
         <UserProfileName>{username}</UserProfileName>
       </UserProfile>
-      <Photo src={photoUrl} />
-      <Description>{description}</Description>
+      <Link href={photoUrlFull} target='_blank'>
+        <Photo src={photoUrlThumb} />
+      </Link>
+      <Description>{description === null ? 'No description :(' : description}</Description>
     </Wrapper>
   )
 }
@@ -48,6 +50,10 @@ const UserProfileImage = styled.img`
 
 const UserProfileName = styled.span`
   font-size: 13px;
+`;
+
+const Link = styled.a`
+
 `;
 
 const Photo = styled.img`

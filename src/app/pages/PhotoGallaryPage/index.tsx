@@ -21,8 +21,6 @@ export function PhotoGallaryPage() {
     dispatch(actions.loadPhotos());
   }
 
-  
-
   return (
     <Wrapper>
       <Title>Photo gallary</Title>
@@ -31,11 +29,11 @@ export function PhotoGallaryPage() {
         {photos?.map(photo => (
           <PhotoGallaryItem
             key={photo.id}
-            id={photo.id}
             username={photo.user.name}
             userProfileImage={photo.user.profile_image.small}
             description={photo.description}
-            photoUrl={photo.urls.thumb}
+            photoUrlThumb={photo.urls.thumb}
+            photoUrlFull={photo.urls.full}
           />
         ))}
       </PhotoGallaryList>

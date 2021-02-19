@@ -68,6 +68,7 @@ export interface Photo extends PhotoListResponseItem {
     }
   },
   urls: {
+    full: string,
     thumb: string
   }
 }

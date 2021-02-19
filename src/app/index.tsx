@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 // Страницы
 import { NotFoundPage } from './pages/NotFoundPage';
-import { PhotosPage } from './pages/PhotosPage';
+import { PhotoGallaryPage } from './pages/PhotoGallaryPage';
 
 // Глобальные стили
 import { GlobalStyle } from 'styles/global-styles';
@@ -13,7 +13,7 @@ export function App() {
     <BrowserRouter>
       <Switch>
         <Redirect exact from='/' to='/photos' />
-        <Route exact path='/photos' component={PhotosPage} />
+        <Route exact path='/photos' component={PhotoGallaryPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

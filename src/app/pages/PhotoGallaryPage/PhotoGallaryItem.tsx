@@ -56,7 +56,7 @@ const Photo = styled.img`
   transition-duration: 0.4s;
 
   &:hover {
-    opacity: .7;
+    opacity: .5;
     cursor: pointer;
   }
 `;

@@ -1,4 +1,4 @@
-export interface PhotoListResponseItem {
+interface PhotoListResponseItem {
   id: string,
   created_at: Date,
   updated_at: Date,
@@ -55,5 +55,19 @@ export interface PhotoListResponseItem {
     html: string,
     download: string,
     download_location: string
+  }
+}
+
+export interface Photo extends PhotoListResponseItem {
+  id: string,
+  description: string | null,
+  user: {
+    name: string
+    profile_image: {
+      small: string
+    }
+  },
+  urls: {
+    thumb: string
   }
 }

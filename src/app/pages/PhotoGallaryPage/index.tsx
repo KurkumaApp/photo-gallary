@@ -1,24 +1,43 @@
-import * as React from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
+
+import { usePhotoGallarySlice } from './slice'
+import { selectPhotos, selectButtonText } from './slice/selectors';
 
 import { PhotoGallaryItem } from './PhotoGallaryItem';
 
 import { Button } from './components/Button';
 
 export function PhotoGallaryPage() {
+  const { actions } = usePhotoGallarySlice();
+
+  const photos = useSelector(selectPhotos);
+  const buttonText = useSelector(selectButtonText);
+
+  const dispatch = useDispatch();
+
+  function onClickButton() {
+    dispatch(actions.loadPhotos());
+  }
+
+  
+
   return (
     <Wrapper>
       <Title>Photo gallary</Title>
-      <Button>Download photos</Button>
+      <Button onClick={onClickButton}>{buttonText}</Button>
       <PhotoGallaryList>
-        <PhotoGallaryItem
-          key='tqkDGqPW8Vo'
-          id='tqkDGqPW8Vo'
-          userProfileImage='https://images.unsplash.com/profile-1568038532214-ef271a0a383eimage?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32'
-          username='olgaserjantu'
-          photoUrl='https://images.unsplash.com/photo-1587554801471-37976a256db0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwzMjQ1NnwxfDF8YWxsfDF8fHx8fHwyfA&ixlib=rb-1.2.1&q=80&w=200'
-          description='Woman in yellow shirt sitting on chair'
-        />
+        {photos?.map(photo => (
+          <PhotoGallaryItem
+            key={photo.id}
+            id={photo.id}
+            username={photo.user.name}
+            userProfileImage={photo.user.profile_image.small}
+            description={photo.description}
+            photoUrl={photo.urls.thumb}
+          />
+        ))}
       </PhotoGallaryList>
     </Wrapper>
   );
